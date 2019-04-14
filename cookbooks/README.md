@@ -64,7 +64,7 @@ _Lastly, save all modified files and execute your new recipe. We will be using "
 _How can you check to see if the recipe executed successfully? You will always want to think of ways to check your code directly (ad-hoc), so that you can automate this testing process later on._
 
 11. Use powershell to check your results
-    * You can use the `Invoke Web-Request` command to return what's being served on the localhost. This can be abbreviated to `iwr`:
+    * You can use the `Invoke-WebRequest` command to return what's being served on the localhost. This can be abbreviated to `iwr`:
       * `Invoke-WebRequest localhost` or
       * `iwr localhost`
     * How else can you check your work?
