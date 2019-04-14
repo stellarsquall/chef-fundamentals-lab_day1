@@ -65,7 +65,7 @@ _How can you check to see if the recipe executed successfully? You will always w
 
 11. Use powershell to check your results
     * You can use the `Invoke Web-Request` command to return what's being served on the localhost. This can be abbreviated to `iwr`:
-      * `Invoke Web-Request localhost` or
+      * `Invoke-WebRequest localhost` or
       * `iwr localhost`
     * How else can you check your work?
       * Port 80 access should be open to TCP traffic on your instance.
