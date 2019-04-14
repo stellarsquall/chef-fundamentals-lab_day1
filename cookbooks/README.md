@@ -38,7 +38,7 @@ _Recipes are Ruby files (.rb) that are stored in a cookbook's recipes/ directory
    * Run `chef generate recipe cookbooks\myiis server`. Notice that the .rb file extension is unnecessary. You can also simply add a new file called "server.rb" to the myiis\cookbooks directory, but there are benefits to using the generator.
 
 ## Populate chef resources
-Here you will use three Chef resources to set up a simple IIS webserver.
+_Here you will use three Chef resources to set up a simple IIS webserver._
 
 8. Populate the recipe with the following resources:
    * powershell_script 'Install IIS'
