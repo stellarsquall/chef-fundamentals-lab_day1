@@ -23,12 +23,29 @@ _Here you will explore the process for generating cookbooks and accessing help m
 
 5. Generate a new cookbook called "myiis"
    * From the home directory, run `chef generate cookbook cookbooks\myiis`
+     * You may experience a git warning or error when running the command. Rest assured, your new cookbook should have been generated.
+     * To suppress the warning you can set up your Git account if you would like using the `git config` command and entering in your Github/Gitlab credentials, or by supplying fake creds.
+     * Git allows us to use version control within cookbooks. Each cookbook will be a separate repository, set up by the generate command. You can use any other source control method you would like with your cookbooks, but I recommend Git.
 
 6. Open the cookbooks directory with your text editor
    * Using any text editor you like, open the cookbooks directory.
    * This can be done from powershell by running `code cookbooks\`
    * Examine the contents of the empty cookbook. This is the standard scaffolding to be expected with the `chef generate cookbook` command. An empty copy of the "myiis" generated cookbook can be found in this directory for comparison.
-
+   * Discussion: What are the most essential components of a cookbook? Some of these files and folders will be unfamiliar until later modules, so for now don't worry about a complete understanding. Turn to a discussion partner/group and discuss the significance of the following:
+     * README.md
+     * metadata.rb
+     * CHANGELOG.md
+     * LICENSE
+     * .gitignore
+     * chefignore
+     * recipes/
+   * Feel free to discuss the following, but don't focus on these at the moment:
+     * Berksfile    
+     * .kitchen.yml
+     * spec/
+     * test/
+     * .delivery/
+     
 ## Generate a recipe
 
 _Recipes are Ruby files (.rb) that are stored in a cookbook's recipes/ directory. When a cookbook is executed, a single recipe will be called by the chef-client. Later we will see that recipes can call other recipes, and the resources they contain._
@@ -36,6 +53,7 @@ _Recipes are Ruby files (.rb) that are stored in a cookbook's recipes/ directory
 7. Add a recipe to the cookbook called "server"
    * Using the help options for `chef generate`, can you figure out how to do this?
    * Run `chef generate recipe cookbooks\myiis server`. Notice that the .rb file extension is unnecessary. You can also simply add a new file called "server.rb" to the myiis\cookbooks directory, but there are benefits to using the generator.
+   * Bonus: what other files did the recipe generator add to the cookbook?
 
 ## Populate chef resources
 _Here you will use three Chef resources to set up a simple IIS webserver._
