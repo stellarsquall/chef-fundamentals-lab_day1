@@ -75,7 +75,7 @@ _Lastly, save all modified files and execute your new recipe. We will be using "
 10. Examine the help options on the chef-client command
     * `chef-client --help`
     * locate the "local-mode" option, and understand we will be using this flag to run cookbooks that are available locally (and not hosted on a Chef Server)
-    * execute the server recipe with `chef-client --local-mode 'recipe[myiis::server]'`
+    * execute the server recipe with `chef-client --local-mode cookbooks\myiis\recipes\server.rb`
 
 ## Verify the results
 
