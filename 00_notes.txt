@@ -1,3 +1,4 @@
+00_getting_setup
 1) Maybe include the PDF of slides?
 2) Not relevant for the labs with Windows but what do you think about including a super simple guide to using command line editors for Nix stuff?
 3) Might want to switch default for Windows 2016 Workstation - 0.1.2 AMI to use t2.large instance type. Also, is there a particular Securtity Group to use or is sg-be2b51c2
@@ -5,3 +6,6 @@ All_Open good?
 4) README.md could use an intro to the lab environment explaining that students will be RPDing into an AWS virtual machine with Microsoft Remote Desktop and will need to install it if they are on a Mac.
 6) Will the Windows Workstation be updated to use Chef Workstation rather than ChefDK?
 7) Do we want to use semantic versioning with our labs?
+
+01_resources
+1) You reference default actions in Step 6 of the 'About resources' section.  We might want to direct students to read about defaults first.
