@@ -1,4 +1,4 @@
-# chef-client Lab Exercise
+# chef-client and Local Mode Lab Exercise
 ## Chef Fundamentals
 
 This lab focuses on the execution of the chef-client in local-mode, and applying recipes stored within cookbooks. These exercises should be completed within the provided Windows 2016 training environment.

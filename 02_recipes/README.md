@@ -9,16 +9,16 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
 
 1. Explore the about page on recipe files [About Recipes](https://docs.chef.io/recipes.html)
    * The first thing mentioned is that a recipe A recipe "is the most fundamental configuration element within the organization." Why would it be considered foundational?
-   * This page has a lot of great info on it, but contains many concepts we have yet to cover. After reading over the summary of bullet points, move on to the next step.
+   * This page has a lot of great info on it but contains many concepts we have yet to cover. After reading over the summary of bullet points, move on to the next step.
 
 2. Navigate to the docs page titled [About the Recipe DSL](https://docs.chef.io/dsl_recipe.html)
-   * A Domain-Specific Language, or DSL, is key to many of the configuration files you will write with Chef. This is simply a language that can be used within particular files, and in the case of recipes will be an abstaction of the Ruby programming language.
-   * Recipe files are Ruby files (.rb) that will be executed by the chef-client. They may contain any Ruby expressions or statements you like, but is NOT pure Ruby code, as they contain Chef resource. A resource is not pure Ruby, it's Chef code.
+   * A Domain-Specific Language, or DSL, is key to many of the configuration files you will write with Chef. This is simply a language that can be used within particular files, and in the case of recipes will be an abstraction of the Ruby programming language.
+   * Recipe files are Ruby files (.rb) that will be executed by the chef-client. They may contain any Ruby expressions or statements you like, but is NOT pure Ruby code, as they contain Chef resources. A resource is not pure Ruby, it's Chef code.
    * The docs page states that the recipe DSL is primarily used to declare Chef resources, and when executed by the chef-client ensures safe interaction with a node's underlying OS. It stresses that anything you can do with Ruby, you can do within a recipe, such as using a `case` statement or a conditional like `if`.
    * If this is your first time using Ruby, you may find the [Ruby Style Guide](https://docs.chef.io/ruby.html) to be a valuable resource. If you come across any code that doesn't make sense, this is a great cheat-sheet to have handy.
 
 3. The recipe DSL allows for a number of helper methods only used within these files.
-   * The most common method you might see is the `include_recipe` method, which allows you to call recipes from within a cookbook's recipes/ directory. More on cookbooks later.
+   * The most common method you might see is the `include_recipe` method, which allows you to call recipes from within a cookbook's "/recipes" directory (we'll cover more on cookbooks later).
    * There are lots of other useful methods. We won't take the time to explore them all now, but notice these:
      * attribute?
      * cookbook_name
@@ -36,6 +36,7 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
    * Resources are compiled from top-to-bottom in the order they appear. They are executed synchronously, meaning one after another. This prevents resources that depend on prior events from attempting to execute if a pre-condition has failed.
      * Does this make sense?
      * The chef-client will fail its run if a resource cannot be executed. For example, a service that has not been installed cannot be configured. Guards (not_if and only_if conditions) can be used to provide custom checks for resources.
+     * If the chef-client fails at any point, it will exit out of the chef-client run and not attempt to execute any following resource blocks.  However, any configuration applied to resources up until that point will not be undone.
 
 5. Ruby code is compiled before Chef resources. This can be very important when you find values driven by Ruby code are not being parsed correctly by a resource.
 
@@ -46,7 +47,7 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
      * hash and array declarations
      * class definitions
    * This does _not_ apply to values that are passed within a resource definition itself, such as template variables. This applies to Ruby code outside of resource definitions.
-   * When this presents a challenge it can be worked around using a `lazy` block definition or by chaining the `.run_action` method onto the end of a resource definition. See
+   * When this presents a challenge it can be worked around using a `lazy` block definition or by chaining the `.run_action` method onto the end of a resource definition. Again, this is an advanced topic but if you are interested in learning more, take a look at the following:
      * [Lazy Evalutation](https://docs.chef.io/resource_reference.html#lazy-evaluation)
      * [Run in Compile Phase](https://docs.chef.io/resource_reference.html#run-in-compile-phase)
 
@@ -54,10 +55,10 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
 
 6. Recipes are executed by the `chef-client`. We'll examine the chef-client in more detail later on, but for now here's the general definition:
    * The `chef-client` is "an agent that runs locally on every node that is under management by Chef. When a chef-client is run, it will perform all of the steps that are required to bring the node into the expected state"
-   * Whether the Chef code is stored on a Chef server or written directly on a node (a machine to be configured by Chef), the chef-client always executed recipes locally on that machine.
+   * Whether the Chef code is stored on a Chef server or written directly on a node (a machine to be configured by Chef), the chef-client always executes recipes locally on that machine.
    * When a chef-client "run" is performed, each Chef resource whose state can be checked goes through the "test-and-repair" procedure. If a resource is already in the desired state as defined by a recipe, no action is taken.
 
-7. How should the chef-client be called? Again taking the package resource as an example:
+7. How should the chef-client be called? Again, taking the package resource as an example:
    ```
     package 'nginx' do
       version '1.15.12'
@@ -75,14 +76,14 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
     * `sudo chef-client --local-mode install_server.rb`
     * Note that this example assumes we're running the command in the same directory where the recipe is stored.
     * The chef-client would then compile the recipe, turning the resources found into pure Ruby code that can be used to make system-level changes.
-    * The chef-client is lazy. If the package at the requested version is already installed, then no action is taken. If a lower version is installed, the newer version is installed on top of the older one. In this situation it may be more preferable to use the :upgrade action instead of :install if a newer version is available.
+    * The chef-client is lazy. If the package at the requested version is already installed, then no action is taken. If a lower version is installed, the newer version is installed on top of the older one. In this situation it may be preferable to use the :upgrade action instead of :install if a newer version is available.
     * Bonus:
       * What package manager would be used on Ubuntu? On Centos? Would this work on Windows?
 
 ## Your first recipe
 
 9. Let's get cooking! 
-   * In your home directory, create a new file called hello.rb . You can do this from powershell or within your text editor.
+   * In your home directory, create a new file called hello.rb . You can do this from Powershell or within your text editor.
    * Open the [Resources Reference](https://docs.chef.io/resource_reference.html) page, or use search to locate the docs for the following resources:
      * file
      * windows_package
@@ -90,9 +91,9 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
    * Using the `file` resource:
      * create a file at 'c:\users\administrator\hello.txt' with the content "hello, world!"
    * Using `windows_package`:
-     * install the "firefox" package from the source
+     * install the "firefox" package from the source:
      
-       https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=en-US
+       http://archive.mozilla.org/pub/firefox/releases/66.0.3/win64/en-US/Firefox%20Setup%2066.0.3.msi
      * install the "7zip" package locally from the source 
 
        c:\users\administrator\7zip\7z938-x64.msi

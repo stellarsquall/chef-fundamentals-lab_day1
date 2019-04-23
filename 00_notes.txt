@@ -8,4 +8,16 @@ All_Open good?
 7) Do we want to use semantic versioning with our labs?
 
 01_resources
-1) You reference default actions in Step 6 of the 'About resources' section.  We might want to direct students to read about defaults first.
+1) There is a reference to default actions in Step 6 of the 'About resources' section.  We might want to direct students to read about defaults first (or did we have that in the slides?).
+
+02_recipes
+1) For easy reference to lab steps we might want to give each section a number along with the step numbers for that section rather than just bullet points.  For example:
+    1 - What's in a recipe?
+        1.1 Explore the about page on recipes
+        1.2 Navigate to the docs page titled...
+2) Any way we could have links open in a new tab rather than redirect?
+3) Maybe have a text file with the basic Powershell commands to get through the day?
+4) Again, this might be in the slides but for the 'w32time' service resource we have students call multiple actions on a single resource.  Do they know how to do that at this point?
+
+
+
