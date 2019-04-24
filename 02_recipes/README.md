@@ -18,7 +18,7 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
    * If this is your first time using Ruby, you may find the [Ruby Style Guide](https://docs.chef.io/ruby.html) to be a valuable resource. If you come across any code that doesn't make sense, this is a great cheat-sheet to have handy.
 
 3. The recipe DSL allows for a number of helper methods only used within these files.
-   * The most common method you might see is the `include_recipe` method, which allows you to call recipes from within a cookbook's "/recipes" directory (we'll cover more on cookbooks later).
+   * The most common method you might see is the `include_recipe` method, which allows you to call recipes from within a cookbook's recipes/ directory (we'll cover more on cookbooks later).
    * There are lots of other useful methods. We won't take the time to explore them all now, but notice these:
      * attribute?
      * cookbook_name

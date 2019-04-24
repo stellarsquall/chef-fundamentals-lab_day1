@@ -19,5 +19,8 @@ All_Open good?
 3) Maybe have a text file with the basic Powershell commands to get through the day?
 4) Again, this might be in the slides but for the 'w32time' service resource we have students call multiple actions on a single resource.  Do they know how to do that at this point?
 
-
-
+03_cookbooks
+1) The README contains info on connecting to Windows machine that should be included in the 02_recipes section.
+2) Looks like we are still using the powershell_script resource.  Anyway to use the windows_package?
+3) There is an 'example' folder alongside the 'solution' folder. Whatsup with that?
+4) I wasn't able to commit with Git until I ran the git config --global commands for email and username.  I know I could probably just add them with the commit command but it is presented as an optional step to add the global config info and doesn't include the other stuff needed to commit.
