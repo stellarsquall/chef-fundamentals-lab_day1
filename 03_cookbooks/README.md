@@ -143,3 +143,4 @@ _Each generated cookbook will commit its contents to source control with Git. Th
       * [Git-SCM](https://git-scm.com/book/en/v1/Getting-Started-Git-Basics)
       * [Try Github](http://try.github.io)
       * [Learn Git Branching](https://learngitbranching.js.org)
+      * [Git Exercises Fancz](https://gitexercises.fracz.com)
