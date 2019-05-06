@@ -92,7 +92,7 @@ _Recipe files are the foundational Chef "script", meaning they are what is execu
    * Using `windows_package`:
      * install the "firefox" package from the source
      
-       https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=en-US
+       http://archive.mozilla.org/pub/firefox/releases/66.0.3/win64/en-US/Firefox%20Setup%2066.0.3.msi
      * install the "7zip" package locally from the source 
 
        c:\users\administrator\7zip\7z938-x64.msi
