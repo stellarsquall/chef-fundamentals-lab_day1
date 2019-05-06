@@ -1,7 +1,7 @@
-# chef-client Lab Exercise
+# chef-client and Local Mode Lab Exercise
 ## Chef Fundamentals
 
-This lab focuses on the execution of the chef-client in local-mode, and applying recipes stored within cookbooks. These exercises should be completed within the provided Windows 2016 training environment.
+This lab focuses on the execution of the chef-client in local-mode and applying recipes stored within cookbooks. These exercises should be completed within the provided Windows 2016 training environment.
 
 ## The chef-client
 
@@ -16,7 +16,7 @@ _Cookbooks are the packaging mechanism for Chef, meaning they're how we distribu
      * Converge the node
 
 2. Navigate to the docs page [chef-client Executable](https://docs.chef.io/ctl_chef_client.html)
-   * This docs page contains a summary of the chef-client executable that is much more useful for now. It states that the chef-client "is an agent that runs locally on every node that is under management by Chef. When a chef-client is run, it will perform all of the steps that are required to bring the node into the expected state".
+   * This docs page contains information on the chef-client executable that is much more relevant at the moment. It states that the chef-client "is an agent that runs locally on every node that is under management by Chef. When a chef-client is run, it will perform all of the steps that are required to bring the node into the expected state".
    * These steps include:
      * Registering and authenticating the node with the Chef server
      * Building the node object
@@ -52,19 +52,19 @@ _Since we don't yet have a Chef Server, we're executing cookbooks written direct
 
 ## Including recipes
 
-6. Having to supply a long runlist to the chef-client on each run is inconvenient, and doesn't make for an automated workflow.
+6. Having to supply a long runlist to the chef-client on each run is inconvenient and doesn't make for an automated workflow.
    * Cookbooks should be structured in a way that encapsulates related functionality. The myiis cookbook should only contain recipes and files that support installing and configuring the myiis windows-feature.
    * Similarly, recipes should only contain instructions for performing specific tasks. Instead of setting up a single "server" recipe, later on it would make more sense to have an installation recipe, a setup recipe, and a service recipe to keep these operations logically isolated.
-   * This can be automated into a workflow, because recipes can call other recipes!
+   * This can be automated into a workflow because recipes can call other recipes!
 
 7. The `include_recipe` method is used to call a recipe from within a cookbook, or from another cookbook when dependencies are properly configured.
    * You can find check the include_recipe docs [here](https://docs.chef.io/dsl_recipe.html#include-recipes)
    * When a recipe is included, the resources found in that recipe will be inserted in the same exact order at the point where the include_recipe keyword is located.
    * The format for the command is the same COOKBOOK::RECIPE used when supplying a runlist:
      * `include_recipe 'COOKBOOK::RECIPE'`
-   * Each include_recipe statement should appear on a new line, and included recipes and the recipes they contain will be called in the order they appear.
+   * Each include_recipe statement should appear on a new line; the included recipes and the recipes they they themselves may contain will be called in the order they appear.
 
-8. Let's try this out. Notice the default.rb file in the recipes directory. The default recipe came from the `chef generate cookbook` command, and it used to set up a workflow for the cookbook.
+8. Let's try this out. Notice the default.rb file in the recipes directory. The default recipe came from the `chef generate cookbook` command and it used to set up a workflow for the cookbook.
    * Open the default recipe. 
    * Use the include_recipe method to call the server recipe by default:
    * `include_recipe 'myiis::server'`

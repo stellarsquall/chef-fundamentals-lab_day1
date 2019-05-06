@@ -1,0 +1,26 @@
+00_getting_setup
+1) Maybe include the PDF of slides?
+2) Not relevant for the labs with Windows but what do you think about including a super simple guide to using command line editors for Nix stuff?
+3) Might want to switch default for Windows 2016 Workstation - 0.1.2 AMI to use t2.large instance type. Also, is there a particular Securtity Group to use or is sg-be2b51c2
+All_Open good?
+4) README.md could use an intro to the lab environment explaining that students will be RPDing into an AWS virtual machine with Microsoft Remote Desktop and will need to install it if they are on a Mac.
+6) Will the Windows Workstation be updated to use Chef Workstation rather than ChefDK?
+7) Do we want to use semantic versioning with our labs?
+
+01_resources
+1) There is a reference to default actions in Step 6 of the 'About resources' section.  We might want to direct students to read about defaults first (or did we have that in the slides?).
+
+02_recipes
+1) For easy reference to lab steps we might want to give each section a number along with the step numbers for that section rather than just bullet points.  For example:
+    1 - What's in a recipe?
+        1.1 Explore the about page on recipes
+        1.2 Navigate to the docs page titled...
+2) Any way we could have links open in a new tab rather than redirect?
+3) Maybe have a text file with the basic Powershell commands to get through the day?
+4) Again, this might be in the slides but for the 'w32time' service resource we have students call multiple actions on a single resource.  Do they know how to do that at this point?
+
+03_cookbooks
+1) The README contains info on connecting to Windows machine that should be included in the 02_recipes section.
+2) Looks like we are still using the powershell_script resource.  Anyway to use the windows_package?
+3) There is an 'example' folder alongside the 'solution' folder. Whatsup with that?
+4) I wasn't able to commit with Git until I ran the git config --global commands for email and username.  I know I could probably just add them with the commit command but it is presented as an optional step to add the global config info and doesn't include the other stuff needed to commit.
