@@ -12,8 +12,11 @@ end
 # notice in the above file resource the action is excluded.
 # what is the default action for the file resource?
 
-windows_package 'firefox' do
-  source 'http://archive.mozilla.org/pub/firefox/releases/66.0.3/win64/en-US/Firefox%20Setup%2066.0.3.msi'
+windows_package 'Mozilla Firefox 66.0.3 (x64 en-US)' do
+  source 'http://archive.mozilla.org/pub/firefox/releases/67.0b9/win64/en-US/Firefox%20Setup%2067.0b9.exe'
+  version '66.0.3'
+  options '-ms'
+  installer_type :custom
   action :install
 end
 
