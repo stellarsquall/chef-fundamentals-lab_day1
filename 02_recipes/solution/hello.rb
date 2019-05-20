@@ -34,7 +34,7 @@ end
 # this is because it has the startup_type property built-in, but often the service resource can still be used, as seen below
 
 service 'w32time' do
-  action [:start, :enable]
+  action [:enable, :start]
 end
 
 # To take multiple actions, they must be passed within an array.
